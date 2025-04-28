@@ -2,8 +2,10 @@ import * as pg from "pg";
 const { Pool } = pg.default;
 
 const connectionPool = new Pool({
-  connectionString:
-    "postgresql://postgres:postgres@localhost:5432/blog-post-db",
+  connectionString: process.env.CONNECTION_STRING,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 export default connectionPool;
